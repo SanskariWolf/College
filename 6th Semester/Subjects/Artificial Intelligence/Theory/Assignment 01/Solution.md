@@ -18,6 +18,10 @@ Okay, let's break down these questions and provide answers:
 *   **Turing Test:**
     *   The Turing test, proposed by Alan Turing in 1950, is a test of a machine's ability to exhibit intelligent behavior equivalent to, or indistinguishable from, that of a human.  A human evaluator engages in natural language conversations with both a human and a machine. If the evaluator cannot reliably distinguish the machine from the human, the machine is said to have passed the Turing test.  It primarily assesses the ability to simulate human-like conversation, including understanding and responding appropriately to questions.
 
+https://www.scaler.com/topics/artificial-intelligence-tutorial/approaches-of-artificial-intelligence/
+
+
+
 **Q2. Differentiate between Uninformed and Informed Search techniques with the help of examples.**
 
 *   **Uninformed Search (Blind Search):** These search strategies have no information about the goal's location or which path is likely to lead to the goal.  They systematically explore the search space.

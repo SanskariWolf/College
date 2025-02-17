@@ -1,0 +1,3 @@
+John Doe: password123: john.doe@example.com
+Jane Smith: securepass: jane.smith@another.com
+Alice Brown: mysecret: alice.brown@domain.net

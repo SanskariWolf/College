@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form and Display</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        margin: 20px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      select {
+        width: 250px;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      button {
+        background-color: #4caf50;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #3e8e41;
+      }
+
+      #displayArea {
+        margin-top: 20px;
+      }
+
+      .error {
+        color: red;
+        font-size: 0.8em;
+        margin-bottom: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Enter Your Information</h2>
+
+    <form id="myForm">
+      <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" />
+        <span id="nameError" class="error"></span>
+      </div>
+
+      <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" />
+        <span id="emailError" class="error"></span>
+      </div>
+
+      <div>
+        <label for="mobile">Mobile No:</label>
+        <input type="tel" id="mobile" name="mobile" />
+        <span id="mobileError" class="error"></span>
+      </div>
+
+      <div>
+        <label>Gender:</label>
+        <input type="radio" id="male" name="gender" value="male" />
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="female" />
+        <label for="female">Female</label>
+        <span id="genderError" class="error"></span>
+      </div>
+
+      <div>
+        <label for="favouriteColour">Favourite Colour:</label>
+        <select id="favouriteColour" name="favouriteColour">
+          <option value="">Select Colour</option>
+          <option value="red">Red</option>
+          <option value="blue">Blue</option>
+          <option value="green">Green</option>
+          <option value="yellow">Yellow</option>
+        </select>
+        <span id="colourError" class="error"></span>
+      </div>
+
+      <button type="button" onclick="displayInformation()">Submit</button>
+    </form>
+
+    <div id="displayArea">
+      <label for="displayTextBox">Combined Information:</label>
+      <input type="text" id="displayTextBox" readonly style="width: 400px" />
+    </div>
+
+    <script>
+      function displayInformation() {
+        clearErrors();
+
+        let name = document.getElementById("name").value;
+        let email = document.getElementById("email").value;
+        let mobile = document.getElementById("mobile").value;
+        let gender = document.querySelector('input[name="gender"]:checked');
+        let favouriteColour = document.getElementById("favouriteColour").value;
+
+        let isValid = validateForm(
+          name,
+          email,
+          mobile,
+          gender,
+          favouriteColour
+        );
+
+        if (isValid) {
+          let combinedInfo = `Name: ${name}, Email: ${email}, Mobile: ${mobile}, Gender: ${gender.value}, Favourite Colour: ${favouriteColour}`;
+
+          document.getElementById("displayTextBox").value = combinedInfo;
+        } else {
+          document.getElementById("displayTextBox").value = ""; // Clear the textbox if it had content
+        }
+      }
+
+      function validateForm(name, email, mobile, gender, favouriteColour) {
+        let isValid = true;
+
+        if (name.trim() === "") {
+          document.getElementById("nameError").textContent =
+            "Name is required.";
+          isValid = false;
+        }
+
+        if (email.trim() === "") {
+          document.getElementById("emailError").textContent =
+            "Email is required.";
+          isValid = false;
+        } else if (!isValidEmail(email)) {
+          document.getElementById("emailError").textContent =
+            "Invalid email format.";
+          isValid = false;
+        }
+
+        if (mobile.trim() === "") {
+          document.getElementById("mobileError").textContent =
+            "Mobile number is required.";
+          isValid = false;
+        } else if (!isValidMobile(mobile)) {
+          document.getElementById("mobileError").textContent =
+            "Invalid mobile number format (e.g., 123-456-7890 or 1234567890).";
+          isValid = false;
+        }
+
+        if (!gender) {
+          document.getElementById("genderError").textContent =
+            "Gender is required.";
+          isValid = false;
+        }
+
+        if (favouriteColour === "") {
+          document.getElementById("colourError").textContent =
+            "Favourite colour is required.";
+          isValid = false;
+        }
+
+        return isValid;
+      }
+
+      function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+      }
+
+      function isValidMobile(mobile) {
+        const mobileRegex = /^(?:(?:\d{3}[- ]?\d{3}[- ]?\d{4})|\d{10})$/;
+        return mobileRegex.test(mobile);
+      }
+
+      function clearErrors() {
+        document.getElementById("nameError").textContent = "";
+        document.getElementById("emailError").textContent = "";
+        document.getElementById("mobileError").textContent = "";
+        document.getElementById("genderError").textContent = "";
+        document.getElementById("colourError").textContent = "";
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<students>
+    <student>
+        <enrolment_number>20231001</enrolment_number>
+        <name>Alice Smith</name>
+        <mobile_number>123-456-7890</mobile_number>
+        <email_id>alice.smith@example.com</email_id>
+    </student>
+    <student>
+        <enrolment_number>20231002</enrolment_number>
+        <name>Bob Johnson</name>
+        <mobile_number>987-654-3210</mobile_number>
+        <email_id>bob.johnson@example.com</email_id>
+    </student>
+    <student>
+        <enrolment_number>20231003</enrolment_number>
+        <name>Charlie Brown</name>
+        <mobile_number>555-123-4567</mobile_number>
+        <email_id>charlie.brown@example.com</email_id>
+    </student>
+</students>
