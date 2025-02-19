@@ -1,0 +1,9 @@
+[user]
+username = SanskariWolf
+
+[ignore]
+files = 
+
+[project]
+project_dir = Jokre
+

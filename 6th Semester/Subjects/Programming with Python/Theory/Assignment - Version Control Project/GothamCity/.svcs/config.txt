@@ -1,0 +1,9 @@
+[user]
+username = Batman
+
+[ignore]
+files = 
+
+[project]
+project_dir = GothamCity
+
